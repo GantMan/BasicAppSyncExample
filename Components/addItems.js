@@ -30,11 +30,20 @@ export default class AddItems extends Component {
     })
   }
 
+  deleteAll = () => {
+    const { allItems } = this.props
+
+    // Delete em all
+    if (allItems) {
+      allItems.map(item => this.props.onDelete({id: item.id}))
+    }
+  }
+
   render() {
     return (
       <View>
         <TextInput placeholder='Packing Item'
-
+          autoFocus
           blurOnSubmit
           clearTextOnFocus
           onSubmitEditing={this.handleAdd}
@@ -50,7 +59,7 @@ export default class AddItems extends Component {
         </TouchableOpacity>
         <TouchableOpacity
           style={[{backgroundColor: 'red'}, styles.button]}
-          onPress={() => window.alert('CLEAR?')}>
+          onPress={this.deleteAll}>
           <Text>CLEAR ITEMS</Text>
         </TouchableOpacity>
       </View>

@@ -10,7 +10,6 @@ import {
 export default class ListItems extends Component {
 
   listItems = () => {
-    // window.alert(this.props.allItems)
     LayoutAnimation.spring()
     return this.props.allItems && this.props.allItems.map(item => <Text key={item.id}>{item.name}</Text>)
   }
